@@ -1,0 +1,56 @@
+html {
+	height: 100%;
+	font-size: 62.5%;
+}
+
+body {
+	height: 100%;
+	background: #FFF;
+	color: #646363;
+	@include font-size(15);
+	line-height: 1.5;
+}
+
+#tortilla {
+	.header-fixed & {
+		
+	}
+
+}
+
+/* =============================================================================
+   Header Layouts
+   ========================================================================== */
+
+#header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+
+	.logo-container {
+		text-align: center;
+
+		.logo {
+			color: #000;
+			@include font-size(82);
+			vertical-align: top;
+			@include transition(all 0.3s ease);
+
+			&:before {
+				vertical-align: top;
+			}
+		}
+	}
+
+	.admin-bar &{
+		 top: 32px;
+	}
+}
+
+#main {
+
+}
+
+#footer {
+}

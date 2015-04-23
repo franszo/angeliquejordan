@@ -1,0 +1,26 @@
+@mixin brandon {
+	font-family:'Brandon Grot W01 Black';
+	font-weight: normal;
+}
+
+.brandon {
+	@include brandon;
+}
+
+@mixin caslon {
+	font-family:'AdobeCaslonW01-Regular';
+	font-weight: normal;
+}
+
+.caslon {
+	@include caslon;
+}
+
+@mixin caslon-talic {
+	font-family:'AdobeCaslonW01-Regular';
+	font-weight: normal;
+}
+
+.caslon-talic {
+	@include caslon-talic;
+}

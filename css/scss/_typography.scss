@@ -1,0 +1,187 @@
+
+a {
+	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+	@include transition(all 0.3s ease);
+	&:hover {
+		color: $dark-blue;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	line-height: 1.2;
+	color: #000;
+	font-weight: normal;
+}
+
+h1 {
+	@include font-size(60);
+
+	@include device-width(12) {
+		@include font-size(56);	
+	}
+
+	@include device-width(10) {
+		@include font-size(52);	
+	}
+
+	@include device-width(8) {
+		@include font-size(48);	
+	}
+
+	@include device-width(6) {
+		@include font-size(45);	
+	}
+
+	@include device-width(5) {
+		@include font-size(35);	
+	}	
+}
+
+h2 {
+	@include font-size(35);
+	color: #333333;
+
+	@include device-width(12) {
+		@include font-size(33);	
+	}
+
+	@include device-width(10) {
+		@include font-size(30);	
+	}
+
+	@include device-width(8) {
+		@include font-size(28);	
+	}
+
+	@include device-width(6) {
+		@include font-size(25);	
+	}
+}
+
+h3 {
+	@include font-size(40);
+
+	@include device-width(12) {
+		@include font-size(36);	
+	}
+
+	@include device-width(10) {
+		@include font-size(32);	
+	}
+
+	@include device-width(8) {
+		@include font-size(28);	
+	}
+
+	@include device-width(6) {
+		@include font-size(25);	
+	}
+
+}
+
+h4 {
+	@include font-size(34);
+
+	@include device-width(12) {
+		@include font-size(32);	
+	}
+
+	@include device-width(10) {
+		@include font-size(28);	
+	}
+
+	@include device-width(8) {
+		@include font-size(24);	
+	}
+
+	@include device-width(6) {
+		@include font-size(20);	
+	}
+}
+
+h5 {
+	@include font-size(25);
+
+	@include device-width(12) {
+		@include font-size(22);	
+	}
+
+	@include device-width(10) {
+		@include font-size(18);	
+	}
+
+	@include device-width(8) {
+		@include font-size(14);	
+	}
+}
+
+h6 {
+	@include font-size(18);
+
+	@include device-width(12) {
+		@include font-size(16);	
+	}
+
+	@include device-width(10) {
+		@include font-size(14);	
+	}
+
+	@include device-width(8) {
+		@include font-size(12);	
+	}
+}
+
+p {
+	margin: 0;
+}
+
+.bold,
+strong,
+b {
+	font-weight: bold;
+}
+
+.normal {
+	font-weight: normal;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.align-left,
+.text-left {
+	text-align: left;
+}
+
+.align-right,
+.text-right {
+	text-align: right;
+}
+
+.align-center,
+.text-center {
+	text-align:  center;
+}
+
+.align-middle,
+.text-middle {
+	vertical-align: middle;
+}
+
+.normal-style {
+	font-style: normal;	
+}
+
+.underline {
+	text-decoration: underline;	
+}
+
+.uppercase {
+	color: #000;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}

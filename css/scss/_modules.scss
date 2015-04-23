@@ -1,0 +1,46 @@
+.primary-navigation {
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	right: -300px;
+	z-index: 7500;
+	top: 0;
+	background: #000;
+	@include transition(all 0.3s ease);
+
+	ul.menu {
+		margin-top: 8em;
+		width: 100%;
+	}
+
+	li {
+		width: 100%;
+		text-align: center;
+		margin: 1em 0;
+
+		a {
+			@include inline-block;
+			@include font-size(15);
+			text-transform: uppercase;
+			color: #FFF;
+			border-bottom: 2px solid transparent;
+			letter-spacing: 4px;
+			line-height: 1.4;
+
+			&:hover {
+				border-bottom: 2px solid #FFF;
+			}
+		}
+
+		&.current-menu-item, &.current-page-ancestor {
+			a {
+				border-bottom: 2px solid #FFF;
+			}						
+		}
+	}
+
+	.navigation-open & {
+		@include transition-delay(.5s);
+		right: 0px;
+	}
+}
