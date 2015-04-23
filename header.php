@@ -25,7 +25,29 @@
 
 </head>
 <body <?php body_class(); ?>>
+	<div class="border top"></div>
+	<div class="border right"></div>
+	<div class="border bottom"></div>
+	<div class="border left"></div>
+
+	<?php if( is_front_page()): ?>
+		<div class="slideout left">
+			<div class="content">
+				<a class="btn">About</a>
+				<?php content_by_id(22); ?>
+			</div>
+		</div>
+
+		<div class="slideout right">
+			<div class="content">
+				<a class="btn">Contact</a>
+				<?php content_by_id(24); ?>			
+			</div>
+		</div>			
+	<?php endif; ?>	
+
 <div id="tortilla">
+
 	
 	<header id="header" role="banner">
 		<a class="menu-btn" href="#">

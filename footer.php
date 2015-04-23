@@ -11,10 +11,7 @@
 	</div><!-- #main .site-main -->
 	
 	<footer id="footer" class="site-footer" role="contentinfo">
-		<div class="inner container">
-			<?php wp_nav_menu( array( 'depth' => 1, 'theme_location' => 'secondary', 'menu_class' => 'clearfix menu', 'container' => 'nav', 'container_class' => 'footer-navigation navigation' )); ?>
-		</div>
-
+			<?php wp_nav_menu( array( 'depth' => 1, 'theme_location' => 'secondary', 'menu_class' => 'clearfix menu', 'container' => 'nav', 'container_class' => 'footer-navigation navigation' )); ?>			
 	</footer><!-- #footer .site-footer -->
 </div><!-- #wrap -->
 

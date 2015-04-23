@@ -1,46 +1,256 @@
-.primary-navigation {
-	position: fixed;
-	width: 200px;
-	height: 100%;
-	right: -300px;
-	z-index: 7500;
-	top: 0;
-	background: #000;
-	@include transition(all 0.3s ease);
+.navigation {
 
 	ul.menu {
-		margin-top: 8em;
-		width: 100%;
 	}
 
 	li {
-		width: 100%;
-		text-align: center;
-		margin: 1em 0;
+		@include inline-block;
 
 		a {
-			@include inline-block;
-			@include font-size(15);
+			@include font-size(12);
+			@include brandon;
 			text-transform: uppercase;
-			color: #FFF;
-			border-bottom: 2px solid transparent;
-			letter-spacing: 4px;
-			line-height: 1.4;
-
 			&:hover {
-				border-bottom: 2px solid #FFF;
+				border-bottom: 1px solid #000;
 			}
 		}
 
 		&.current-menu-item, &.current-page-ancestor {
 			a {
-				border-bottom: 2px solid #FFF;
+				border-bottom: 1px solid #000;
 			}						
 		}
 	}
 
 	.navigation-open & {
-		@include transition-delay(.5s);
-		right: 0px;
+
 	}
+}
+
+.footer-navigation {
+
+	li {
+		margin: 0 3em;
+		line-height: 4em;
+
+		a {
+			letter-spacing: 4px;
+		}
+	}
+}
+
+.grid {
+	@extend .clearfix;
+	position: relative;
+	clear: both;
+	margin: 0 auto;
+	padding: 1em 0 10em;
+	max-width: 1000px;
+	list-style: none;
+	text-align: center;
+
+	li {
+		width: 48%;
+		float: left;
+		margin: 4em 1%;
+
+		@include device-width(8) {
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}	
+
+		@include device-width(5) {
+			width: 98%;
+		}				
+
+		&.full {
+			width: 100%;
+
+			@include device-width(8) {
+				width: 48%;
+			}			
+		}
+	}
+
+	figure {
+		position: relative;
+		float: left;
+		overflow: hidden;
+		margin: 10px 1%;
+		height: auto;
+		background: #3085a3;
+		text-align: center;
+		cursor: pointer;
+
+		@include device-width(8) {
+			margin: 0 !important;
+		}		
+
+		img {
+			position: relative;
+			display: block;
+			min-height: 100%;
+			max-width: 100%;
+			opacity: 1;
+		}		
+
+
+		figcaption {
+			@include backface-visibility('hidden');
+
+			&::before,
+			&::after {
+				pointer-events: none;
+			}		
+
+			> a {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1000;
+			}				
+		}		
+	}	
+}
+
+figure.effect {
+	background: #162633;
+	text-align: left;
+
+	img {
+		@include transition(opacity, 0.45s ease-out);
+		@include backface-visibility('hidden');
+	}	
+
+	figcaption::before {
+		position: absolute;
+		opacity: 0;
+		top: 150%;
+		left: -90%;
+		width: 125%;
+		height: 130%;
+		background: url(../images/misc/square.svg) no-repeat center center;
+		background-size: 100% 100%;
+		content: '';
+		-webkit-transition: opacity 0.45s, -webkit-transform 0.45s;
+		transition: opacity 0.45s, transform 0.45s;
+		@include rotate3d(0,0,1,45deg);		
+		-webkit-transform-origin: 0 100%;
+		transform-origin: 100% 0%;
+	}	
+
+	a {
+
+		p {
+			position: absolute;
+			left: 0;
+			width: 60%;
+			bottom: 20%;
+			padding: 2em 0 2em 2em;
+			@include font-size(11);
+			color: #000000;
+			@include brandon;
+			opacity: 0;
+			-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+			transition: opacity 0.35s, transform 0.35s;
+			@include translate3d(0,50px,0);	
+			text-transform: uppercase;
+			
+
+			span {
+				display: block;
+				@include caslon;
+				@include font-size(13);
+				color: #000;
+				margin-top: 20px;
+				text-transform: none;
+				letter-spacing: 0;
+			}	
+		}			
+	}		
+
+	&:hover {
+
+		img {
+			opacity: 0.8;
+			-webkit-filter: grayscale(100%);
+		}
+		
+		figcaption::before {
+			opacity: 1;
+			@include rotate3d(0,0,1,118deg);
+
+		}
+
+		p {
+			opacity: 1;
+			@include translate3d(0,0,0);
+		}	
+
+		p {
+			@include transition-delay(0.30s);
+		}	
+	} 	
+}
+
+.slideout {
+	$width: 60%;
+	position: fixed;
+	width: $width;
+	height: 100%;
+	background: #ebebeb;
+	z-index: 4000;
+	@include transition(all 0.3s ease);
+
+	.content {
+		position: relative;
+		height: 100%;
+
+		.btn {
+			position: absolute;
+			padding: 0 5px;
+		}		
+	}	
+
+	&.left {
+		left: -$width;
+
+		.btn {
+			right: -80px;
+			top: 45%;	
+			@include rotate3d(0,0,1,-90deg);						
+		}
+	}
+
+	&.right {
+		right: -$width;
+
+		.btn {
+			left: -90px;
+			top: 45%;	
+			@include rotate3d(0,0,1, 90deg);						
+		}		
+	}
+
+	&.active {
+		@include box-shadow(0 0 25px #989898);
+
+		.btn {
+			background: #000;
+			color: #FFF;
+		}
+
+		&.left {
+			left: 0;
+		}
+
+		&.right {
+			right: 0;
+		}
+
+	}
+
 }

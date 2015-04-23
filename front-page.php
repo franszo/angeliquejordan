@@ -1,92 +1,67 @@
 <?php get_header(); ?>
-<section id="front-page">
 
+<section id="front-page" class="archives">
 	<?php
-	$args = array(									
-		'post_type'   => 'slides',
-		'post_status' => 'publish',	
-		'posts_per_page' => 6,
-		'order'       => 'ASC',
-		'orderby'     => 'menu_order'
-	);
+		global $paged, $wp_query, $wp;
+		if  ( empty($paged) ) {
+			if ( !empty( $_GET['paged'] ) ) {
+				$paged = $_GET['paged'];
+			} elseif ( !empty($wp->matched_query) && $args = wp_parse_args($wp->matched_query) ) {
+				if ( !empty( $args['paged'] ) ) {
+					$paged = $args['paged'];
+				}
+			}
+			if ( !empty($paged) )
+				$wp_query->set('paged', $paged);
+		}	
+		$temp = $wp_query;
+		$wp_query= null;
+		$wp_query = new WP_Query();
 
-	$slide_query = new WP_Query( $args ); ?>
-
-	<?php if ( $slide_query->have_posts() ): ?>
-
-		<div id="wowslider">
-			<div class="ws_images">
-				<ul>
-					<?php while ( $slide_query->have_posts() ) : $slide_query->the_post(); ?>
-
-						<?php $post_object = get_field('slide_linkage'); ?>
-
-					    <li>
-					    	<a href="<?php echo get_permalink($post_object->ID); ?>">
-						    	<img src="<?php the_field('slide_image'); ?>" alt="" title="1">	
-					    	</a>
-				    	</li>
-			    	<?php endwhile; ?>
-				</ul>
-			</div>
-			<div class="ws_bullets">
-				<div>
-					<?php while ( $slide_query->have_posts() ) : $slide_query->the_post(); ?>
-						<a href="<?php the_field('slide_image'); ?>" title="'1'">
-							<span>
-							</span>
-						</a>						
-					<?php endwhile; ?>
-				</div>
-			</div>
-		</div>		
-		</div>		
-	<?php endif; ?>
-
-
-	<div class="inner container">
-	<?php
 		$args = array(									
-			'post_type'   => 'post',
-			'post_status' => 'publish',	
-			'posts_per_page' => 6,
-			'order'       => 'DESC',
-			'orderby'     => 'date',	
-			'ignore_sticky_posts' => true		
+			'post_type'   => 'work',
+			'posts_per_page' => 10,
+			'order'       => 'ASC',
+			'orderby'     => 'menu_order',
+			'paged'		  =>  $paged
 		);
-	
-		$query = new WP_Query( $args ); ?>
 
-		<?php if ( $query->have_posts() ): ?>
+		$wp_query = new WP_Query( $args ); 		
+	?> 
+	<ul class="grid">
+		<?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+		
+			<?php 
+				$img_w = get_field('front_page_image_size_width');
+				$img_h = get_field('front_page_image_size_height');
+				$image_size = array(
+					'width' => $img_w ? $img_w : 450, 
+					'height' => $img_h ? $img_h : 290
+				);
 
-			<h2 class="section-title"><?php _e('Latest News') ?></h2>
+				$position = get_field('position');
+				$full_width = get_field('full_width');
+			?>	
 
-			<ul class="posts">
-				<?php 
-				$i = 0;
-				$i = 1;
-				$array = array(1,5);				
-				while ( $query->have_posts() ) : $query->the_post(); ?>
-					<?php 
-						$image_size = (in_array($i % 6 , $array)) ?  array('width' => 804, 'height' => 538) : array('width' => 450, 'height' => 301);
-					?>
-	            <li>
-	                <?php include_module('post-item', array(
-						'title' => get_the_title(),
-						'url' =>  get_permalink(),
-						'image_url' => get_post_thumbnail_src($image_size),
-					)); ?>
-	            </li>								
-				<?php 
-				$i++;
-				endwhile; // end of the loop. ?>
-			</ul>
-
-		<?php else: ?>
-			<div class="not-found">
-				<h3 class="title"><?php _e("No posts found", THEME_NAME); ?></h3>
-			</div>
-		<?php endif; ?>
-	</div>
+			<li <?php if($full_width) { echo 'class="full"';} ?>>
+				<figure class="effect" <?php if($position) { echo 'style=" margin: '. $position .'"';}; ?>>
+					<img src="<?php echo get_post_thumbnail_src($image_size); ?>" alt="<?php echo get_the_title(); ?>"/>
+					<figcaption>
+						<a href="<?php the_permalink(); ?>">
+							<p class="title">
+								<?php the_title(); ?>
+								<span><?php echo get_the_excerpt(); ?></span>
+							</p>
+						</a>
+					</figcaption>			
+				</figure>						
+			</li>
+		    	
+		<?php endwhile; ?>
+	</ul>
+	<div id="navbelow">
+		<?php next_posts_link('Next &raquo;'); ?>			
+	</div> 
+	<?php $wp_query = null; $wp_query = $temp;?>
 </section>
 <?php get_footer(); ?>

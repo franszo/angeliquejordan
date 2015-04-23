@@ -341,7 +341,8 @@ table {
 
 .brandon {
   font-family: 'Brandon Grot W01 Black';
-  font-weight: normal; }
+  font-weight: normal;
+  letter-spacing: 4px; }
 
 .caslon {
   font-family: 'AdobeCaslonW01-Regular';
@@ -784,13 +785,27 @@ b {
 /* =============================================================================
    Buttons
    ========================================================================== */
-button:disabled,
-a:disabled {
-  opacity: 0.5; }
-button:active, button:focus,
-a:active,
-a:focus {
-  outline: none; }
+button,
+a {
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  button:disabled,
+  a:disabled {
+    opacity: 0.5; }
+  button:active, button:focus,
+  a:active,
+  a:focus {
+    outline: none; }
+
+.btn {
+  font-family: 'Brandon Grot W01 Black';
+  font-weight: normal;
+  letter-spacing: 4px;
+  text-transform: uppercase; }
+  .btn:hover {
+    border-bottom: 1px solid #000; }
 
 .menu-btn {
   width: 100px;

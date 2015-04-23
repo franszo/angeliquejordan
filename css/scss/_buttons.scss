@@ -4,6 +4,7 @@
 
 button,
 a {
+    @include transition(all 0.3s ease);
     &:disabled {
         opacity: 0.5;
     }
@@ -13,8 +14,13 @@ a {
     }
 }
 
-.primary-btn {
-    &:hover {}
+.btn {
+    @include brandon;
+    text-transform: uppercase;    
+
+    &:hover {
+        border-bottom: 1px solid #000;
+    }
 }
 
 $height-icon: 50px;
