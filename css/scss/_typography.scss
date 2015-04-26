@@ -135,7 +135,7 @@ h6 {
 }
 
 p {
-	margin: 0;
+	margin: 0 0 10px 0;
 }
 
 .bold,
@@ -184,4 +184,14 @@ b {
 	color: #000;
 	letter-spacing: 2px;
 	text-transform: uppercase;
+}
+
+.subtitle {
+	@include brandon;
+	text-transform: uppercase;
+	@include font-size(10);
+}
+
+em {
+	@include caslon-italic;
 }

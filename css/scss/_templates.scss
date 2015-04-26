@@ -1,3 +1,16 @@
 .archives {
 
 }
+
+#single-work {
+	.section {
+		.content {
+			max-width: 60%;
+			margin: 0 auto;
+
+			@include device-width(7) {
+				max-width: 90%;
+			}
+		}
+	}
+}

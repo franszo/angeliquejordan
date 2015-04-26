@@ -129,8 +129,8 @@ figure.effect {
 		position: absolute;
 		opacity: 0;
 		top: 150%;
-		left: -90%;
-		width: 125%;
+		left: -100%;
+		width: 135%;
 		height: 130%;
 		background: url(../images/misc/square.svg) no-repeat center center;
 		background-size: 100% 100%;
@@ -208,6 +208,7 @@ figure.effect {
 	.content {
 		position: relative;
 		height: 100%;
+		padding: 15% 10%;
 
 		.btn {
 			position: absolute;
@@ -250,7 +251,82 @@ figure.effect {
 		&.right {
 			right: 0;
 		}
+	}
+}
+
+.socials {
+	@include inline-block;
+	
+	a {
+		margin-right: 29px;
+
+		&:last-child {
+			margin-right: 0;			
+		}
+
+		&:hover {
+			&.icon-linkedin {
+				color: #0077B5;
+			}
+
+			&.icon-behance {
+				color: #005CFF;
+			}
+
+			&.icon-instagram {
+				color: #3E6D92;
+			}
+
+			&.icon-pinterest {
+				color: #CD1D1F;
+
+			}			
+		}
 
 	}
+}
 
+.work-title {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	@include font-size(13);
+	left: 40px;
+	@include transform-origin( 0, 50%);
+  -webkit-transform: rotate(-90deg) translate(-50%, 50%);
+     -moz-transform: rotate(-90deg) translate(-50%, 50%);
+      -ms-transform: rotate(-90deg) translate(-50%, 50%);
+       -o-transform: rotate(-90deg) translate(-50%, 50%);
+          transform: rotate(-90deg) translate(-50%, 50%);	
+}
+
+.single-nav {
+	margin-bottom: 1.5em;
+
+	a {
+		@include inline-block;
+		@extend .btn;
+		@include font-size(12);
+
+		&.prev-posts {
+			margin-right: 33px;
+
+			&:after {
+				margin-left: 30px;
+				@include icon(chevron-left);
+			}
+
+		}
+
+		&.next-posts {
+			margin-left: 33px;
+
+			&:before {
+				margin-right: 30px;
+				@include icon(chevron-right);
+			}
+
+		}
+	}
 }

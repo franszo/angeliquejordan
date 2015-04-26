@@ -48,7 +48,7 @@
 			},
 			scroll: function(){
 				var scrollTop = main.w.scrollTop(),
-					body = main.body.element,
+					body = $('body.home');
 					header = main.header.element,
 					btn = $('.menu-btn', header);
 
@@ -57,16 +57,6 @@
 				} else if(scrollTop < 10 && body.hasClass('header-fixed')) {
 					body.removeClass('header-fixed');
 				}
-
-				if(main.header.element.hasClass('navigation-open')) {
-					header.removeClass('navigation-open');
-					btn.removeClass('active white');
-				}
-
-				$( ".primary-navigation" ).mouseleave(function() {
-					header.removeClass('navigation-open');
-					btn.removeClass('active white');
-				});
 			}
 		},
 
@@ -123,7 +113,6 @@
 					fullPage.fullpage({
 						navigation: true,
 						navigationPosition: 'right',
-						responsive: 900,
 						css3: true,
 						loopBottom: false,
 						loopTop: false,

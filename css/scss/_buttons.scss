@@ -17,6 +17,7 @@ a {
 .btn {
     @include brandon;
     text-transform: uppercase;    
+    border: 1px solid transparent;
 
     &:hover {
         border-bottom: 1px solid #000;

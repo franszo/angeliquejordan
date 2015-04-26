@@ -26,6 +26,10 @@ add_action( 'wp_enqueue_scripts', 'custom_scripts', 30);
 
 add_action( 'wp_print_styles', 'custom_styles', 30);
 
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
+
+add_filter('body_class','custom_body_classes');
+
 
 
 // Custom Filters
@@ -178,4 +182,34 @@ function content_by_id( $post_id=0, $more_link_text = null, $stripteaser = false
     setup_postdata( $post, $more_link_text, $stripteaser );
     the_content();
     wp_reset_postdata( $post );
+}
+
+function my_mce_before_init_insert_formats( $init_array ) {  
+	$style_formats = array(  
+		// Each array child is a format with it's own settings
+		array(  
+			'title' => 'Subtitle',  
+			'block' => 'span',  
+			'classes' => 'subtitle',
+			'wrapper' => true,
+			
+		),  		
+		array(  
+			'title' => 'Uppercase',  
+			'block' => 'span',  
+			'classes' => 'uppercase',
+			'wrapper' => true,
+		)
+	);  
+
+	$init_array['style_formats'] = json_encode( $style_formats );  
+	
+	return $init_array;  
+}
+
+function custom_body_classes($classes) {
+	if ( ! is_home()) {
+		$classes[] = 'header-fixed';
+	}
+	return $classes;
 }

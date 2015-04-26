@@ -41,9 +41,12 @@
 
 				$position = get_field('position');
 				$full_width = get_field('full_width');
+
+				$class = array('wow fadeInUp');
+				$class[] = ($full_width) ? 'full' : '';
 			?>	
 
-			<li <?php if($full_width) { echo 'class="full"';} ?>>
+			<li class="<?php echo implode(' ', $class); ?>">
 				<figure class="effect" <?php if($position) { echo 'style=" margin: '. $position .'"';}; ?>>
 					<img src="<?php echo get_post_thumbnail_src($image_size); ?>" alt="<?php echo get_the_title(); ?>"/>
 					<figcaption>

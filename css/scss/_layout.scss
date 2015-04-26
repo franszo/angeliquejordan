@@ -88,6 +88,19 @@ body {
 	.admin-bar &{
 		 top: 32px;
 	}
+
+	.header-fixed & {
+		padding: 10px 0 0;
+		background: rgba(#FFF, 0.9);
+
+		.logo-container {
+			@include font-size(30);
+		}
+
+		.logo {
+			@include font-size(32);
+		}
+	}
 }
 
 #main {

@@ -17,11 +17,11 @@
 	@include caslon;
 }
 
-@mixin caslon-talic {
+@mixin caslon-italic {
 	font-family:'AdobeCaslonW01-Regular';
 	font-weight: normal;
 }
 
-.caslon-talic {
-	@include caslon-talic;
+.caslon-italic {
+	@include caslon-italic;
 }

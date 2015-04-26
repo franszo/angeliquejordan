@@ -66,13 +66,13 @@ html.fp-enabled,
     z-index: 4;
     top: 50%;
     cursor: pointer;
-    margin-top: -38px;
+    margin-top: -60px;
     -webkit-transform: translate3d(0,0,0);
     -ms-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
 .fp-controlArrow.fp-prev {
-    left: 35px;
+    left: 10%;
 
     &:before {
         @include icon(arrow-left);
@@ -80,7 +80,7 @@ html.fp-enabled,
     }    
 }
 .fp-controlArrow.fp-next {
-    right: 35px;
+    right: 10%;
 
     &:before {
         @include icon(arrow-right);
