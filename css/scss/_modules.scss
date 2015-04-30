@@ -125,14 +125,14 @@ figure.effect {
 		@include backface-visibility('hidden');
 	}	
 
-	figcaption::before {
+	.after {
 		position: absolute;
 		opacity: 0;
 		top: 150%;
 		left: -100%;
 		width: 135%;
 		height: 130%;
-		background: url(../images/misc/square.svg) no-repeat center center;
+		background: #ebebeb;
 		background-size: 100% 100%;
 		content: '';
 		-webkit-transition: opacity 0.45s, -webkit-transform 0.45s;
@@ -175,11 +175,11 @@ figure.effect {
 	&:hover {
 
 		img {
-			opacity: 0.8;
+			opacity: 1;
 			-webkit-filter: grayscale(100%);
 		}
 		
-		figcaption::before {
+		.after {
 			opacity: 1;
 			@include rotate3d(0,0,1,118deg);
 
@@ -208,26 +208,51 @@ figure.effect {
 	.content {
 		position: relative;
 		height: 100%;
-		padding: 15% 10%;
 
+		.inner {
+			padding: 15% 10%;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+
+			&:before {
+				@include icon(dot);
+				color: #000;
+				@include font-size(6);
+				margin-bottom: 40px;
+				display: block;				
+			}
+
+		}
 		.btn {
 			position: absolute;
 			padding: 0 5px;
+			background: #fff;
 		}		
 	}	
 
 	&.left {
 		left: -$width;
 
+		.inner {
+			padding: 15% 50% 15% 20%;
+		}
+
 		.btn {
 			right: -80px;
 			top: 45%;	
-			@include rotate3d(0,0,1,-90deg);						
+			@include rotate3d(0,0,1,-90deg);
+			z-index: 5000;					
 		}
 	}
 
 	&.right {
 		right: -$width;
+
+		.inner {
+			padding: 15% 20% 15% 50%;
+			text-align: right;
+		}		
 
 		.btn {
 			left: -90px;
@@ -240,16 +265,26 @@ figure.effect {
 		@include box-shadow(0 0 25px #989898);
 
 		.btn {
-			background: #000;
-			color: #FFF;
+			background: none;
 		}
 
 		&.left {
 			left: 0;
+
+			.btn {
+				right: auto;	
+				left: 0px;
+			}
+			
 		}
 
 		&.right {
 			right: 0;
+
+			.btn {
+				left: auto;	
+				right: 0px;
+			}			
 		}
 	}
 }
@@ -308,25 +343,91 @@ figure.effect {
 		@include inline-block;
 		@extend .btn;
 		@include font-size(12);
+		position: relative;
 
 		&.prev-posts {
-			margin-right: 33px;
+			margin-right: 63px;
 
 			&:after {
-				margin-left: 30px;
 				@include icon(chevron-left);
+				position: absolute;
+				top: 4px;		
+				right: -33px;		
 			}
 
 		}
 
 		&.next-posts {
-			margin-left: 33px;
+			margin-left: 63px;
 
 			&:before {
-				margin-right: 30px;
 				@include icon(chevron-right);
+				position: absolute;
+				top: 4px;					
+				left: -33px;
 			}
 
 		}
 	}
+}
+
+#navbelow {
+	.next-btn {
+		display: none;
+	}
+}
+
+#infscr-loading {
+	@extend .clearfix;
+	clear: left;
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.issuuembed {
+	position: absolute;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.ipad {
+	width: 426px;
+	height: 287px;
+	position: relative;
+	background: url(../images/misc/ipad.png) left top no-repeat;
+	padding: 17px 0 0 44px;
+	margin: 0 auto;
+
+	.inner {
+		width: 339px;
+		height: 254px;
+		overflow: auto;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+.animsition-loading:after {
+	display: none;
+}
+
+.animsition-loading:before {
+	@include icon(logo);
+	@include font-size(100);
 }

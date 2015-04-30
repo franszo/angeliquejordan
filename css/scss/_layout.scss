@@ -11,7 +11,7 @@ body {
 	line-height: 1.5;
 	position: relative;
 
-	> .border {
+	.animsition > .border {
 		position: fixed;
 		z-index: 5000;
 
@@ -72,15 +72,51 @@ body {
 
 	.logo-container {
 		text-align: center;
+		@include font-size(0);
 
 		.logo {
 			color: #000;
-			@include font-size(82);
-			vertical-align: top;
 			@include transition(all 0.3s ease);
 
-			&:before {
-				vertical-align: top;
+			#ajlogo {
+				margin: auto;
+				width: 60px;
+				height: 100px;	
+				@include transition(all 0.3s ease);			
+
+				.path {
+					fill-opacity: 0;
+					stroke: #000;
+					stroke-width: 5;
+					stroke-dasharray: 870;
+					stroke-dashoffset: 870;
+					@include animation(draw 4s infinite ease-in);
+				    -webkit-animation-iteration-count: 1;
+				    animation-iteration-count: 1;
+				    -webkit-animation-fill-mode: forwards;
+				    animation-fill-mode: forwards;
+				}
+			}
+
+			@include keyframes(draw) {
+				0% {
+					stroke-dashoffset: 870;
+					fill: none;
+					fill-opacity: 0;										
+				}	
+
+
+				80% {
+					stroke-dashoffset: 160;
+					fill: #000;
+					fill-opacity: 0;					
+				}	
+			
+				100% {
+					stroke-dashoffset: 0;
+					fill: #000;
+					fill-opacity: 1;
+				}
 			}
 		}
 	}
@@ -94,11 +130,13 @@ body {
 		background: rgba(#FFF, 0.9);
 
 		.logo-container {
-			@include font-size(30);
 		}
 
 		.logo {
-			@include font-size(32);
+			#ajlogo {
+				width: 20px;
+				height: 40px;				
+			}
 		}
 	}
 }

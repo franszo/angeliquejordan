@@ -30,6 +30,8 @@ add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 
 add_filter('body_class','custom_body_classes');
 
+add_filter( 'embed_oembed_html', 'custom_oembed_filter', 10, 4 ) ;
+
 
 
 // Custom Filters
@@ -212,4 +214,9 @@ function custom_body_classes($classes) {
 		$classes[] = 'header-fixed';
 	}
 	return $classes;
+}
+
+function custom_oembed_filter($html, $url, $attr, $post_ID) {
+    $return = '<div class="video-container">'.$html.'</div>';
+    return $return;
 }

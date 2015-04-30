@@ -40,6 +40,7 @@
 				);
 
 				$position = get_field('position');
+				$bgcolor = get_field('background_color');
 				$full_width = get_field('full_width');
 
 				$class = array('wow fadeInUp');
@@ -47,9 +48,11 @@
 			?>	
 
 			<li class="<?php echo implode(' ', $class); ?>">
-				<figure class="effect" <?php if($position) { echo 'style=" margin: '. $position .'"';}; ?>>
+			
+				<figure class="effect" style="<?php if($position) { echo 'margin: '. $position .'; ';}; ?> <?php if($bgcolor) { echo 'background: '. $bgcolor .'';}; ?>"  >
 					<img src="<?php echo get_post_thumbnail_src($image_size); ?>" alt="<?php echo get_the_title(); ?>"/>
 					<figcaption>
+						<div class="after" style="<?php if($bgcolor) { echo 'border-top: 10px solid '. $bgcolor .'';}; ?>"></div>
 						<a href="<?php the_permalink(); ?>">
 							<p class="title">
 								<?php the_title(); ?>
