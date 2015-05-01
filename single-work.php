@@ -1,19 +1,21 @@
 <?php get_header(); ?>
 
-<h2 class="work-title btn">
-	<?php single_post_title(); ?>
-</h2>
+<a href="#firstPage">
+	<h2 class="work-title btn">
+		<?php single_post_title(); ?>
+	</h2>	
+</a>
 
 <div id="single-work">
 	<?php while ( have_posts() ) : the_post(); ?>
 
 	<?php
-
+	$i = 1;
 	if( have_rows('work_content') ):
 	    while ( have_rows('work_content') ) : the_row();
 	        if( get_row_layout() == 'section' ): ?>
 
-	        	<div class="section">
+	        	<div class="section" <?php if($i == 1) { echo 'data-anchor="firstPage"'; } ?>>
 	        		<div class="content">
 						<?php
 						$rows = get_sub_field('slide');
@@ -33,6 +35,7 @@
 					</div>
 	        	</div>
 	        <?php endif;
+	        $i++;
 	    endwhile;	
 	endif; ?>
 	<?php previous_post_link('&laquo; &laquo; %', 'Previous Post', 'yes'); ?> |

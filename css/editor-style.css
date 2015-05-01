@@ -342,7 +342,7 @@ table {
 .brandon {
   font-family: 'Brandon Grot W01 Black';
   font-weight: normal;
-  letter-spacing: 4px; }
+  letter-spacing: 3px; }
 
 .caslon {
   font-family: 'AdobeCaslonW01-Regular';
@@ -535,7 +535,7 @@ h6 {
       font-size: 1.2rem; } }
 
 p {
-  margin: 0 0 10px 0; }
+  margin: 0 0 15px 0; }
 
 .bold,
 strong,
@@ -578,7 +578,7 @@ b {
 .subtitle {
   font-family: 'Brandon Grot W01 Black';
   font-weight: normal;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 10px;
   font-size: 1rem; }
@@ -823,7 +823,7 @@ a {
 .btn {
   font-family: 'Brandon Grot W01 Black';
   font-weight: normal;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   border: 1px solid transparent; }
   .btn:hover {

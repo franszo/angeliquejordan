@@ -11,6 +11,10 @@ body {
 	line-height: 1.5;
 	position: relative;
 
+	&.single-work {
+		background: #f9f9f9;
+	}
+
 	.animsition > .border {
 		position: fixed;
 		z-index: 5000;
@@ -46,7 +50,6 @@ body {
 			border-right: 1px solid #000;
 			height: calc(100% - 40px);			
 		}
-
 	}	
 }
 
@@ -67,7 +70,7 @@ body {
 	width: 100%;
 	top: 0;
 	left: 0;
-	z-index: 500;
+	z-index: 5000;
 	padding: 48px 0 0;
 
 	.logo-container {
@@ -80,21 +83,40 @@ body {
 
 			#ajlogo {
 				margin: auto;
-				width: 60px;
-				height: 100px;	
-				@include transition(all 0.3s ease);			
+				width: 48px;
+				height: 81px;	
+				@include transition(all 0.3s ease);	
 
-				.path {
-					fill-opacity: 0;
-					stroke: #000;
+				path {
+					fill-opacity: 1;
 					stroke-width: 5;
-					stroke-dasharray: 870;
-					stroke-dashoffset: 870;
-					@include animation(draw 4s infinite ease-in);
-				    -webkit-animation-iteration-count: 1;
-				    animation-iteration-count: 1;
-				    -webkit-animation-fill-mode: forwards;
-				    animation-fill-mode: forwards;
+					fill: #000;
+				}		
+
+				&.animate {
+
+					path {
+						fill-opacity: 0;
+						stroke: #000;
+						stroke-width: 5;
+						stroke-dasharray: 870;
+						stroke-dashoffset: 870;
+						@include animation(draw 4s infinite ease-in);
+					    -webkit-animation-iteration-count: 1;
+					    animation-iteration-count: 1;
+					    -webkit-animation-fill-mode: forwards;
+					    animation-fill-mode: forwards;	
+					    
+						&.szar {
+							@include animation-delay(1s);
+						}
+
+						&.dot {
+							fill-opacity: 1;
+							fill: #000;
+							@include animation(no-draw 4s infinite linear);
+						}				    		    
+					}					
 				}
 			}
 
@@ -118,6 +140,43 @@ body {
 					fill-opacity: 1;
 				}
 			}
+
+			@include keyframes(no-draw) {
+			    from {
+			      stroke-dashoffset: 870;
+			      fill: #000;
+			      fill-opacity: 1;									
+			    }	
+
+			     to {
+			      stroke-dashoffset: 870;
+			      fill: #000;
+			      fill-opacity: 1;									
+			    }	
+			}			
+		}
+	}
+
+	.site-title {
+		@include brandon;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: normal;
+		margin-top: 10px;
+		opacity: 1;
+	    
+		span {
+			display: block;
+		}
+
+		.title {
+			@include font-size(16); 
+		}
+
+		.sub {
+			padding-top: 30px;
+			@include font-size(10); 
+			color: #b5b5b5;
 		}
 	}
 
@@ -127,7 +186,6 @@ body {
 
 	.header-fixed & {
 		padding: 10px 0 0;
-		background: rgba(#FFF, 0.9);
 
 		.logo-container {
 		}
@@ -139,6 +197,19 @@ body {
 			}
 		}
 	}
+
+	.single-work.header-fixed & {
+		padding: 47px 0 0;			
+
+		.logo {
+
+			#ajlogo {
+				width: 30px;
+				height: 48px;				
+			}
+		}
+	}
+
 }
 
 #main {
