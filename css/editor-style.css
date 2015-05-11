@@ -535,7 +535,9 @@ h6 {
       font-size: 1.2rem; } }
 
 p {
-  margin: 0 0 15px 0; }
+  margin: 0 0 15px 0;
+  font-family: 'AdobeCaslonW01-Regular';
+  font-weight: normal; }
 
 .bold,
 strong,
@@ -586,6 +588,9 @@ b {
 em {
   font-family: 'AdobeCaslonW01-Regular';
   font-weight: normal; }
+
+.lettering span:last-child {
+  letter-spacing: 0; }
 
 /* =============================================================================
    Grid

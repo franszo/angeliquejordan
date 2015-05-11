@@ -136,6 +136,7 @@ h6 {
 
 p {
 	margin: 0 0 15px 0;
+	@include caslon;
 }
 
 .bold,
@@ -194,4 +195,10 @@ b {
 
 em {
 	@include caslon-italic;
+}
+
+.lettering {
+	span:last-child {
+		letter-spacing: 0;
+	}
 }

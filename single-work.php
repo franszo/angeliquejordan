@@ -1,10 +1,6 @@
 <?php get_header(); ?>
 
-<a href="#firstPage">
-	<h2 class="work-title btn">
-		<?php single_post_title(); ?>
-	</h2>	
-</a>
+<a href="#firstPage" class="work-title btn"><h2><?php single_post_title(); ?></h2></a>
 
 <div id="single-work">
 	<?php while ( have_posts() ) : the_post(); ?>
@@ -38,6 +34,36 @@
 	        $i++;
 	    endwhile;	
 	endif; ?>
+
+	<?php // CREDITS ?>
+
+	<?php if( have_rows('credits') ): ?>
+		<div class="section">
+			<div class="content credits">
+
+				<div class="row headings">
+					<div class="left-column">
+			    		<?php the_field('project_name'); ?>
+			    	</div>
+			    	<div class="right-column">
+			    		<?php the_field('year'); ?>
+		    		</div>
+			    </div>
+
+			    <?php while ( have_rows('credits') ) : the_row(); ?>
+					<div class="row">
+						<div class="left-column">
+							<?php the_sub_field('label'); ?>
+						</div>
+				    	<div class="right-column">
+				    		<?php the_sub_field('value'); ?>
+			    		</div>						
+					</div>
+			    <?php  endwhile; ?>
+		    </div>
+	    </div>
+	<?php endif; ?>	
+
 	<?php previous_post_link('&laquo; &laquo; %', 'Previous Post', 'yes'); ?> |
 	<?php next_post_link('% &raquo; &raquo; ', 'Next Post', 'yes'); ?>	
 	<?php 
@@ -46,6 +72,5 @@
 		// end of the loop. 
 	?>
 </div><!-- #single -->
-<?php include_module('related-posts'); ?>
 
 <?php get_footer(); ?>

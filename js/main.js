@@ -11,6 +11,7 @@
 			this.loaded();
 			this.slideout();
 			this.fullpage.init();
+			this.lettering.init();
 		},
 
 
@@ -52,12 +53,21 @@
 					header = main.header.element,
 					btn = $('.menu-btn', header);
 
-				if(scrollTop > 10 && !body.hasClass('header-fixed')) {
+				if(scrollTop > 0 && !body.hasClass('header-fixed')) {
 					body.addClass('header-fixed');
 					$('.site-title').fadeOut();
-				} else if(scrollTop < 10 && body.hasClass('header-fixed')) {
+				} else if(scrollTop < 0 && body.hasClass('header-fixed')) {
 					body.removeClass('header-fixed');
 				}
+			}
+		},
+
+		lettering: {
+			element: $('.menu-item a, .slideout .btn, .work-title'),
+			init: function() {
+				elements = main.lettering.element;
+				elements.lettering();
+				elements.addClass('lettering');
 			}
 		},
 
@@ -127,8 +137,11 @@
 					var fullPage = $('#single-work');
 
 					fullPage.fullpage({
+						menu: false,
+						anchors:['firstPage', 'secondPage', 'thirdPage', 'fourtPage', 'fifthPage', 'sixthPage', 'seventhPage', 'eighthPage'],						
 						navigation: true,
 						navigationPosition: 'right',
+						easing: 'easeInOut',
 						css3: true,
 						loopBottom: false,
 						loopTop: false,

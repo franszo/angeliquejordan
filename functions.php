@@ -133,10 +133,13 @@ function custom_scripts() {
 	wp_enqueue_script('modernizr', $template_directory_uri.'/js/libs/modernizr.min.js', null, '', true);
 	wp_enqueue_script('imagesloaded', $template_directory_uri.'/js/plugins/jquery.imagesloaded.js', array('jquery'), '', true);
 	wp_enqueue_script( 'infinite_scroll',  get_template_directory_uri() . '/js/plugins/jquery.infinitescroll.min.js', array('jquery'),null,true );
+	wp_enqueue_script('lettering', $template_directory_uri.'/js/plugins/jquery.lettering.js', array('jquery'), '', true);	
 
 	if ( 'work' == get_post_type() ) {
 		wp_enqueue_script('fullpage', $template_directory_uri.'/js/plugins/jquery.fullPage.min.js', array('jquery'), '', true);
 		wp_enqueue_script('slimscroll', $template_directory_uri.'/js/plugins/jquery.slimscroll.min.js', array('jquery'), '', true);
+		wp_enqueue_script('dragscroll', $template_directory_uri.'/js/plugins/dragscroll.js', array('jquery'), '', true);
+		
 		
 	}
 
@@ -201,7 +204,13 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'span',  
 			'classes' => 'uppercase',
 			'wrapper' => true,
-		)
+		),
+		array(  
+			'title' => 'iPad',  
+			'block' => 'div',  
+			'classes' => 'ipad',
+			'wrapper' => true,
+		)		
 	);  
 
 	$init_array['style_formats'] = json_encode( $style_formats );  
