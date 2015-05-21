@@ -56,7 +56,11 @@
 							<?php the_sub_field('label'); ?>
 						</div>
 				    	<div class="right-column">
-				    		<?php the_sub_field('value'); ?>
+				    		<?php if(get_sub_field('url')): ?>
+				    			<a href="<?php the_sub_field('url'); ?>" target="_blank"><?php the_sub_field('value'); ?></a>
+				    		<?php else: ?>
+								<?php the_sub_field('value'); ?>
+				    		<?php endif; ?>
 			    		</div>						
 					</div>
 			    <?php  endwhile; ?>
@@ -64,8 +68,6 @@
 	    </div>
 	<?php endif; ?>	
 
-	<?php previous_post_link('&laquo; &laquo; %', 'Previous Post', 'yes'); ?> |
-	<?php next_post_link('% &raquo; &raquo; ', 'Next Post', 'yes'); ?>	
 	<?php 
 		endwhile; 
 		wp_reset_postdata();

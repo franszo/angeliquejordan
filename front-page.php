@@ -49,14 +49,14 @@
 
 			<li class="<?php echo implode(' ', $class); ?>">
 			
-				<figure class="effect" style="<?php if($position) { echo 'margin: '. $position .'; ';}; ?> <?php if($bgcolor) { echo 'background: '. $bgcolor .'';}; ?>"  >
+				<figure class="effect" style="<?php if($position) { echo 'margin: '. $position .'; ';}; ?> "  >
 					<img src="<?php echo get_post_thumbnail_src($image_size); ?>" alt="<?php echo get_the_title(); ?>"/>
 					<figcaption>
 						<div class="after" style="<?php if($bgcolor) { echo 'border-top: 10px solid '. $bgcolor .'';}; ?>"></div>
 						<a href="<?php the_permalink(); ?>">
 							<p class="title">
-								<?php the_title(); ?>
-								<span><?php echo get_the_excerpt(); ?></span>
+								<span class="wider"><?php the_title(); ?></span>
+								<span class="excerpt"><?php echo get_the_excerpt(); ?></span>
 							</p>
 						</a>
 					</figcaption>			

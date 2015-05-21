@@ -12,6 +12,10 @@ a {
     &:focus {
         outline: none;
     }
+
+    &:hover {
+        color: $dark-blue;
+    }
 }
 
 .btn {
@@ -20,7 +24,7 @@ a {
     border: 1px solid transparent;
 
     &:hover {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $dark-blue;
     }
 }
 

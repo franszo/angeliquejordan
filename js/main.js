@@ -12,6 +12,32 @@
 			this.slideout();
 			this.fullpage.init();
 			this.lettering.init();
+
+
+
+			$('.dragscroll img').pep({
+			  axis: "y",
+			  easeDuration: 500,
+			  useCSSTranslation: false,
+			  rest: function(ev, obj){ 
+			  	outOfBounds(ev, obj)
+			  }
+			});
+
+			// Check if the text went outside its parent
+			function outOfBounds(ev,obj){       
+			  
+			  if ( -obj.$el.position().top > (obj.$el.outerHeight() - obj.$el.parent().outerHeight()) ){
+			   obj.$el.css({ top: -obj.$el.outerHeight() + obj.$el.parent().outerHeight()  })
+			  }
+			                          
+			   if ( obj.$el.position().top > 0 ){ 
+			     setTimeout(function(){ 
+			       obj.$el.css({ top: 0 });
+			     }, 50); 
+			   }
+			}
+
 		},
 
 

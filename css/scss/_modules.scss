@@ -11,7 +11,7 @@
 			@include brandon;
 			text-transform: uppercase;
 			&:hover {
-				border-bottom: 1px solid #000;
+				border-bottom: 1px solid $dark-blue;
 			}
 		}
 
@@ -87,7 +87,6 @@
 		overflow: hidden;
 		margin: 10px 1%;
 		height: auto;
-		background: #3085a3;
 		text-align: center;
 		cursor: pointer;
 
@@ -125,7 +124,6 @@
 }
 
 figure.effect {
-	background: #162633;
 	text-align: left;
 
 	img {
@@ -158,17 +156,21 @@ figure.effect {
 			width: 45%;
 			bottom: 15%;
 			padding: 2em 0 2em 7%;
-			@include font-size(11);
-			color: #000000;
-			@include brandon;
 			opacity: 0;
 			-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 			transition: opacity 0.35s, transform 0.35s;
 			@include translate3d(0,50px,0);	
-			text-transform: uppercase;
-			
 
-			span {
+			.wider {
+				text-transform: uppercase;
+				@include font-size(11);
+				color: #000000;
+				@include brandon;				
+				width: 140%;
+				display: block;				
+			}
+			
+			span.excerpt {
 				display: block;
 				@include caslon;
 				@include font-size(13);
@@ -254,7 +256,7 @@ figure.effect {
 		}
 
 		.btn {
-			right: -80px;
+			right: -72px;
 			top: 45%;	
 			@include rotate3d(0,0,1,-90deg);
 			z-index: 5000;					
@@ -270,7 +272,7 @@ figure.effect {
 		}		
 
 		.btn {
-			left: -90px;
+			left: -82px;
 			top: 45%;	
 			@include rotate3d(0,0,1, 90deg);
 			z-index: 5000;						
@@ -288,7 +290,7 @@ figure.effect {
 
 			.btn {
 				right: auto;	
-				left: 25px;
+				left: 18px;
 			}
 			
 		}
@@ -298,7 +300,7 @@ figure.effect {
 
 			.btn {
 				left: auto;	
-				right: 15px;
+				right: 8px;
 			}			
 		}
 	}
@@ -452,10 +454,8 @@ figure.effect {
 	}
 
 	.inner {
-		position: absolute;
 		width: 100%;
 		height: 0;
-		overflow: hidden;
 		left: 0;
 		top: 4.7%;
 		padding-bottom: 60.7%;
@@ -483,10 +483,8 @@ figure.effect {
 	}	
 
 	.inner {
-		position: absolute;
 		width: 91.5%;
 		height: 0;
-		overflow: hidden;
 		left: 4.3%;
 		top: 4.3%;
 		padding-bottom: 54.9%;
@@ -513,10 +511,8 @@ figure.effect {
 	}	
 
 	.inner {
-		position: absolute;
 		width: 79.6%;
 		height: 0;
-		overflow: hidden;
 		left: 10.3%;
 		top: 6%;
 		padding-bottom: 59.5%;
@@ -543,10 +539,8 @@ figure.effect {
 	}	
 
 	.inner {
-		position: absolute;
 		width: 79.5%;
 		height: 0;
-		overflow: hidden;
 		left: 14.6%;
 		top: 11.7%;
 		padding-bottom: 140.5%;
@@ -558,6 +552,13 @@ figure.effect {
 }
 
 .browser, .imac, .ipad, .iphone {
+
+	.inner {
+		position: absolute;
+		background: rgb(232, 232, 232);
+		overflow: hidden;
+	}
+
 	img {
 		width: 100%;
 		height: auto;
@@ -595,6 +596,16 @@ figure.effect {
 
 .credits {
 	@include caslon;
+	max-width: 340px !important;
+
+	&:after {
+		@include icon(dot);
+		color: #000;
+		font-size: 5px;
+		margin-top: 40px;
+		display: block;			
+		margin-left: 49.5%;
+	}	
 
 	.row {
 		width: 100%;
@@ -602,7 +613,7 @@ figure.effect {
 		margin: 1em 0;
 
 		&.headings {
-			color: #cccccc;
+			color: #b5b5b5;
 			@include brandon;
 			text-transform: uppercase;
 			@include font-size(10);
@@ -625,7 +636,7 @@ figure.effect {
 
 			&:after {
 				content: '';
-				background: #d5d5d5;
+				background: #d7d7d7;
 				position: absolute;
 				width: 10px;
 				height: 1px;
@@ -640,6 +651,10 @@ figure.effect {
 			width: 50%;
 			@include box-sizing(border-box);
 			padding-left: $padding;
+
+			a:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }

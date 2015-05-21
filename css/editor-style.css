@@ -824,6 +824,9 @@ a {
   a:active,
   a:focus {
     outline: none; }
+  button:hover,
+  a:hover {
+    color: #001a35; }
 
 .btn {
   font-family: 'Brandon Grot W01 Black';
@@ -832,7 +835,7 @@ a {
   text-transform: uppercase;
   border: 1px solid transparent; }
   .btn:hover {
-    border-bottom: 1px solid #000; }
+    border-bottom: 1px solid #001a35; }
 
 .menu-btn {
   width: 100px;

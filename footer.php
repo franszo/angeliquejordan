@@ -17,21 +17,33 @@
 
 			<?php if ( is_singular( 'work' ) ):  ?>
 				<div class="single-nav">
-					<?php
-						$prev_post = get_previous_post();
-						if($prev_post) {
-					   		$prev_title = strip_tags(str_replace('"', '', $prev_post->post_title));
-						   	echo "\t" . '<a rel="prev" href="' . get_permalink($prev_post->ID) . '" title="' . $prev_title. '" class="prev-posts">Prev Project</a>' . "\n";
-		                }
+
+					<?php 
+						if( get_adjacent_post(false, '', true) ) { 
+							$prev_post = get_previous_post();
+							if($prev_post) {
+						   		$prev_title = strip_tags(str_replace('"', '', $prev_post->post_title));
+							   	echo "\t" . '<a rel="prev" href="' . get_permalink($prev_post->ID) . '" title="' . $prev_title. '" class="prev-posts">Prev Project</a>' . "\n";
+			                }
+						} else { 
+						    $first = new WP_Query('post_type=work&posts_per_page=1&order=DESC'); $first->the_post();
+						    	echo '<a href="' . get_permalink() . '" class="prev-posts">Prev Project</a>';
+						  	wp_reset_query();
+						}; 
+						    
+						if( get_adjacent_post(false, '', false) ) { 
+							$next_post = get_next_post();
+							if($next_post) {
+							   $next_title = strip_tags(str_replace('"', '', $next_post->post_title));
+							   echo "\t" . '<a rel="next" href="' . get_permalink($next_post->ID) . '" title="' . $next_title. '" class="next-posts">Next Project</a>' . "\n";
+			                }
+						} else { 
+							$last = new WP_Query('post_type=work&posts_per_page=1&order=ASC'); $last->the_post();
+						    	echo '<a href="' . get_permalink() . '" class="next-posts">Next Project</a>';
+						    wp_reset_query();
+						}; 
 					?>
 
-					<?php
-						$next_post = get_next_post();
-						if($next_post) {
-						   $next_title = strip_tags(str_replace('"', '', $next_post->post_title));
-						   echo "\t" . '<a rel="next" href="' . get_permalink($next_post->ID) . '" title="' . $next_title. '" class="next-posts">Next Project</a>' . "\n";
-		                }
-					?>
 				</div>
 			<?php endif; ?>
 
