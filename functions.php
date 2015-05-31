@@ -36,6 +36,14 @@ add_filter( 'embed_oembed_html', 'custom_oembed_filter', 10, 4 ) ;
 
 // Custom Filters
 
+add_filter( 'get_next_post_where', 'gist_adjacent_post_where' );
+
+add_filter( 'get_previous_post_where', 'gist_adjacent_post_where' );
+
+add_filter( 'get_next_post_sort', 'gist_adjacent_post_sort' );
+
+add_filter( 'get_previous_post_sort', 'gist_adjacent_post_sort' );
+
 
 //Custom shortcodes
 
@@ -201,13 +209,7 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'span',  
 			'classes' => 'uppercase',
 			'wrapper' => true,
-		),
-		array(  
-			'title' => 'iPad',  
-			'block' => 'div',  
-			'classes' => 'ipad',
-			'wrapper' => true,
-		)		
+		)	
 	);  
 
 	$init_array['style_formats'] = json_encode( $style_formats );  
@@ -222,7 +224,36 @@ function custom_body_classes($classes) {
 	return $classes;
 }
 
+
 function custom_oembed_filter($html, $url, $attr, $post_ID) {
     $return = '<div class="video-container">'.$html.'</div>';
     return $return;
+}
+
+
+
+/**
+ * Customize Adjacent Post Link Order
+ */
+function gist_adjacent_post_where($sql) {
+  if ( !is_main_query() || !is_singular() )
+    return $sql;
+
+  $the_post = get_post( get_the_ID() );
+  $patterns = array();
+  $patterns[] = '/post_date/';
+  $patterns[] = '/\'[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\'/';
+  $replacements = array();
+  $replacements[] = 'menu_order';
+  $replacements[] = $the_post->menu_order;
+  return preg_replace( $patterns, $replacements, $sql );
+}
+
+function gist_adjacent_post_sort($sql) {
+  if ( !is_main_query() || !is_singular() )
+    return $sql;
+
+  $pattern = '/post_date/';
+  $replacement = 'menu_order';
+  return preg_replace( $pattern, $replacement, $sql );
 }

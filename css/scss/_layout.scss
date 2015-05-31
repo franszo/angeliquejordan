@@ -162,7 +162,7 @@ body {
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: normal;
-		margin-top: .5em;
+		margin-top: 35px;
 		opacity: 1;
 	    
 		span {
@@ -174,7 +174,7 @@ body {
 		}
 
 		.sub {
-			padding-top: 30px;
+			padding-top: 25px;
 			@include font-size(10); 
 			color: #b5b5b5;
 		}
@@ -213,7 +213,7 @@ body {
 }
 
 #main {
-	padding-top: 17em;
+	padding-top: 20em;
 
 	.single-work & {
 		padding-top: 0;

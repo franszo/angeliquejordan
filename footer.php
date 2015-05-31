@@ -26,9 +26,9 @@
 							   	echo "\t" . '<a rel="prev" href="' . get_permalink($prev_post->ID) . '" title="' . $prev_title. '" class="prev-posts">Prev Project</a>' . "\n";
 			                }
 						} else { 
-						    $first = new WP_Query('post_type=work&posts_per_page=1&order=DESC'); $first->the_post();
+							$last = new WP_Query('post_type=work&posts_per_page=1&order=DESC&orderby=menu_order'); $last->the_post();
 						    	echo '<a href="' . get_permalink() . '" class="prev-posts">Prev Project</a>';
-						  	wp_reset_query();
+						    wp_reset_query();							
 						}; 
 						    
 						if( get_adjacent_post(false, '', false) ) { 
@@ -38,9 +38,9 @@
 							   echo "\t" . '<a rel="next" href="' . get_permalink($next_post->ID) . '" title="' . $next_title. '" class="next-posts">Next Project</a>' . "\n";
 			                }
 						} else { 
-							$last = new WP_Query('post_type=work&posts_per_page=1&order=ASC'); $last->the_post();
+						    $first = new WP_Query('post_type=work&posts_per_page=1&order=ASC&orderby=menu_order'); $first->the_post();
 						    	echo '<a href="' . get_permalink() . '" class="next-posts">Next Project</a>';
-						    wp_reset_query();
+						  	wp_reset_query();
 						}; 
 					?>
 
