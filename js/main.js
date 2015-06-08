@@ -129,6 +129,8 @@
 
 			btn.on('click', function(e){
 				e.preventDefault();
+				btn.removeClass('active');
+				$(this).toggleClass('active');
 				if($('html').hasClass('slide-open')) {
 					if($(this).closest( ".slideout" ).hasClass('active')) {
 						$(this).closest( ".slideout" ).toggleClass('active');	

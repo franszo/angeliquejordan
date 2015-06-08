@@ -35,6 +35,44 @@
 
 		a {
 			letter-spacing: 4px;
+
+			&:after {
+				display: none;
+			}		
+		}
+
+		&.behance {
+			a:after {
+				@include icon('behance');	
+			}
+			
+		}
+
+		&.linkedin {
+			a:after {
+				@include icon('linkedin');
+			}
+		}
+		&.instagram {
+			a:after {
+				@include icon('instagram');
+			}
+		}		
+	}
+
+	@include device-width(7) {
+		li {
+			margin: 0 1em;
+
+			a {
+				span {
+					display: none;
+				}
+
+				&:after {
+					@include inline-block;
+				}	
+			}
 		}
 	}
 }
@@ -208,6 +246,10 @@ figure.effect {
 
 .slideout {
 	$width: 60%;
+
+	@include device-width(7) {
+		$width: 100%;
+	}
 	position: fixed;
 	width: $width;
 	height: 100%;
@@ -218,6 +260,7 @@ figure.effect {
 	.content {
 		position: relative;
 		height: 100%;
+		@include transition(none);
 
 		.inner {
 			padding: 15% 10%;
@@ -243,6 +286,7 @@ figure.effect {
 			position: absolute;
 			padding: 0;
 			@include font-size(12);
+			border-bottom: 1px solid transparent;
 		}		
 	}	
 
@@ -259,7 +303,16 @@ figure.effect {
 			right: -72px;
 			top: 45%;	
 			@include rotate3d(0,0,1,-90deg);
-			z-index: 5000;					
+			z-index: 5000;	
+
+			@include device-width(7) {
+				@include rotate3d(0,0,1, 0deg);
+				bottom: 110px;
+				position: fixed;
+				top: auto;
+				right: calc(50% - 27px);	
+				left: auto;			
+			}								
 		}
 	}
 
@@ -275,7 +328,16 @@ figure.effect {
 			left: -82px;
 			top: 45%;	
 			@include rotate3d(0,0,1, 90deg);
-			z-index: 5000;						
+			z-index: 5000;	
+
+			@include device-width(7) {
+				@include rotate3d(0,0,1, 0deg);
+				bottom: 75px;
+				position: fixed;
+				top: auto;
+				left: calc(50% - 37px);	
+				right: auto;			
+			}					
 		}		
 	}
 
@@ -289,8 +351,7 @@ figure.effect {
 			left: 0;
 
 			.btn {
-				right: auto;	
-				left: 18px;
+				right: calc(50% - 27px);	
 			}
 			
 		}
@@ -301,9 +362,31 @@ figure.effect {
 			.btn {
 				left: auto;	
 				right: 8px;
+
+				@include device-width(7) {
+					@include rotate3d(0,0,1, 0deg);
+					top: auto;
+					left: calc(50% - 37px);	
+					right: auto;				
+				}				
 			}			
 		}
 	}
+}
+
+.slide-open {
+	.slideout:not(.active) {
+		z-index: 5000;
+		.btn {
+			//display: none;
+		}
+	}
+
+	.btn.active {
+		border-bottom: 1px solid $dark-blue;
+	}
+
+
 }
 
 .socials {
