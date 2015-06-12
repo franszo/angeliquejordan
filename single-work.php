@@ -39,7 +39,7 @@
 
 	<?php if( have_rows('credits') ): ?>
 		<div class="section">
-			<div class="content credits">
+			<div class="content credits" <?php if(get_field('credits_color')): ?>style="color: <?php the_field('credits_color'); ?>" <?php endif; ?>>
 
 				<div class="row headings">
 					<div class="left-column">
@@ -57,7 +57,7 @@
 						</div>
 				    	<div class="right-column">
 				    		<?php if(get_sub_field('url')): ?>
-				    			<a href="<?php the_sub_field('url'); ?>" target="_blank"><?php the_sub_field('value'); ?></a>
+				    			<a href="<?php the_sub_field('url'); ?>" target="_blank" <?php if(get_field('credits_color')): ?>style="color: <?php the_field('credits_color'); ?>" <?php endif; ?>><?php the_sub_field('value'); ?></a>
 				    		<?php else: ?>
 								<?php the_sub_field('value'); ?>
 				    		<?php endif; ?>
