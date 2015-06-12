@@ -91,10 +91,19 @@
 		padding: 1em 7% 10em;
 	}
 
+	@include device-width(5) {
+		padding: 1em 7% 0em;
+	}
+
+
 	li {
 		width: 48%;
 		float: left;
 		margin: 4em 1%;
+
+		@include device-width(5) {
+			margin: 2em 1%;
+		}
 
 		&:nth-child(2n+1) {
 			clear: left;
@@ -116,6 +125,10 @@
 			@include device-width(8) {
 				width: 48%;
 			}			
+
+			@include device-width(5) {
+				width: 100%;
+			}						
 		}
 	}
 

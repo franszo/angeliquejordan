@@ -50,6 +50,36 @@ body {
 			border-right: 1px solid #000;
 			height: calc(100% - 40px);			
 		}
+
+		@include device-width(5) {
+
+			&.top {
+				top: 0;
+				left: 10px;
+				height: 10px;
+				width: calc(100% - 20px);
+			}
+
+			&.right {
+				top: 9px;
+				width: 10px;
+				height: calc(100% - 20px);			
+			}
+
+			&.bottom {
+				bottom: 0;
+				left: 9px;
+				height: 11px;
+				width: calc(100% - 20px);				
+			}
+
+			&.left {
+				top: 9px;
+				width: 10px;
+				height: calc(100% - 20px);			
+			}			
+
+		}
 	}	
 }
 
@@ -108,7 +138,11 @@ body {
 					    animation-fill-mode: forwards;	
 					    
 						&.szar {
-							@include animation-delay(3s);
+							@include animation-delay(2s);
+
+							@include device-width(5) {
+								@include animation-delay(0s);								
+							}
 						}
 
 						&.dot {
@@ -164,6 +198,10 @@ body {
 		font-weight: normal;
 		margin-top: 35px;
 		opacity: 1;
+
+		@include device-width(5) {
+			display: none;
+		}
 	    
 		span {
 			display: block;
@@ -215,6 +253,10 @@ body {
 #main {
 	padding-top: 20em;
 
+	@include device-width(5) {
+		padding-top: 10em;		
+	}
+
 	.single-work & {
 		padding-top: 0;
 	}
@@ -226,4 +268,13 @@ body {
 	width: 100%;
 	text-align: center;
 	z-index: 5000;
+
+	.home & {
+		@include device-width(5) {
+			position: static;
+		  	display: block;
+		  	text-align: center;
+		  	margin-bottom: 2em;			
+		}
+	}
 }

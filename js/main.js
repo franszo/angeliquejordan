@@ -162,23 +162,27 @@
 
 		fullpage: {
 			init: function() {
-				if($('body').hasClass('single-work')) {
+				if($(window).width() < 500) { 
+				// do any 480 width stuff here, or simply do nothing
+					return;
+				} else {
+					if($('body').hasClass('single-work')) {
 
-					var fullPage = $('#single-work');
+						var fullPage = $('#single-work');
 
-					fullPage.fullpage({
-						menu: false,
-						anchors:['firstPage', 'secondPage', 'thirdPage', 'fourtPage', 'fifthPage', 'sixthPage', 'seventhPage', 'eighthPage'],						
-						navigation: true,
-						navigationPosition: 'right',
-						easing: 'easeInOut',
-						css3: true,
-						loopBottom: false,
-						loopTop: false,
-						loopHorizontal: false,
-						recordHistory: true
-					});
-
+						fullPage.fullpage({
+							menu: false,
+							anchors:['firstPage', 'secondPage', 'thirdPage', 'fourtPage', 'fifthPage', 'sixthPage', 'seventhPage', 'eighthPage'],						
+							navigation: true,
+							navigationPosition: 'right',
+							easing: 'easeInOut',
+							css3: true,
+							loopBottom: false,
+							loopTop: false,
+							loopHorizontal: false,
+							recordHistory: true
+						});
+					}
 				}
 			}
 		}		

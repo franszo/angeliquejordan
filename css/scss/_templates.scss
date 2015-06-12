@@ -4,6 +4,11 @@
 
 #single-work {
 	.section {
+		@include device-width(5) {
+			margin-bottom: 7em;
+		}			
+
+
 		.content {
 			max-width: 60%;
 			margin: 0 auto;
@@ -11,6 +16,10 @@
 			@include device-width(7) {
 				max-width: 90%;
 			}
+
+			@include device-width(5) {
+				max-width: 80%;
+			}			
 		}
 	}
 }
