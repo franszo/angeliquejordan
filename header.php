@@ -54,11 +54,15 @@
 
 	
 	<header id="header" role="banner">
-		<a class="menu-btn" href="#">
-			<span class="line line-1"></span>
-			<span class="line line-2"></span>
-			<span class="line line-3"></span>					
-		</a>	
+		<div id="mobile-nav">
+			<a class="menu-btn btn" href="#"><?php _e('Menu'); ?></a>
+			<ul class="slidedown">
+				<li><a href="<?php bloginfo('url'); ?>" class="btn"><?php _e('Projects'); ?></a></li>
+				<li><a class="btn about"><?php _e('About'); ?></a></li>
+				<li><a class="btn contact"><?php _e('Contact'); ?></a></li>
+			</ul>		
+		</div>
+		
 		<div class="inner container">
 			<div class="logo-container">
 				<a class="logo icon" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">

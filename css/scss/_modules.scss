@@ -1,3 +1,56 @@
+#mobile-nav {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	padding: 30px;
+	@include transition(all 0.3s ease);
+
+	@include device-width(7) {
+		display: block;
+	}
+
+	.btn {
+		@include inline-block;
+		margin-bottom: 10px;
+	}
+
+	.slidedown {
+		max-height: 0;
+		overflow: hidden;
+		-webkit-transition: max-height 0.3s; 
+		-moz-transition: max-height 0.3s; 
+		-ms-transition: max-height 0.3s; 
+		-o-transition: max-height 0.3s; 
+		transition: max-height 0.3s;  
+
+		li:last-child {
+			.btn {
+				margin-bottom: 25px;
+			}			
+		}
+
+		&:after {
+			@include icon('logo');
+			@include font-size(55);
+			color: black;
+		}
+
+	}
+
+	.navigation-open & {
+		background: #FFF;
+		z-index: 6000;
+
+		.slidedown {
+			max-height: 300px;
+		}
+	}
+}
+
 .navigation {
 
 	ul.menu {
@@ -322,12 +375,12 @@ figure.effect {
 		  padding: 0;
 
 		  @include device-width(7) {
-		  	margin: 5% 10% 25%;
+		  	margin: 10% 10% 25%;
 		  	max-width: 80%;
 		  }
 
 		  @include device-width(6) {
-		  	margin: 5% 10% 25%;
+		  	margin: 15% 10% 25%;
 		  	max-width: 80%;
 		  	@include font-size(12);
 		  }	
@@ -348,12 +401,7 @@ figure.effect {
 			z-index: 5000;	
 
 			@include device-width(7) {
-				@include rotate3d(0,0,1, 0deg);
-				bottom: 110px;
-				position: fixed;
-				top: auto;
-				right: calc(50% - 27px);	
-				left: auto;			
+				display: none;
 			}								
 		}
 	}
@@ -401,12 +449,7 @@ figure.effect {
 			z-index: 5000;	
 
 			@include device-width(7) {
-				@include rotate3d(0,0,1, 0deg);
-				bottom: 75px;
-				position: fixed;
-				top: auto;
-				left: calc(50% - 37px);	
-				right: auto;			
+				display: none;
 			}					
 		}		
 	}
@@ -514,17 +557,18 @@ figure.effect {
           transform: rotate(-90deg) translate(-50%, 50%);	
 
 	@include device-width(6) {
-	  	-webkit-transform: rotate(0deg) translate(0%, 0%);
-	     -moz-transform: rotate(0deg) translate(0%, 0%);
-	      -ms-transform: rotate(0deg) translate(0%, 0%);
-	       -o-transform: rotate(0deg) translate(0%, 0%);
-	          transform: rotate(0deg) translate(0%, 0%);	
-	    left: 0;
-	    bottom: 55px;	
-	    top: auto;
-	    width: 100%;
-	    text-align: center;
-
+	  	// -webkit-transform: rotate(0deg) translate(0%, 0%);
+	   //   -moz-transform: rotate(0deg) translate(0%, 0%);
+	   //    -ms-transform: rotate(0deg) translate(0%, 0%);
+	   //     -o-transform: rotate(0deg) translate(0%, 0%);
+	   //        transform: rotate(0deg) translate(0%, 0%);	
+	   //  left: 0;
+	   //  bottom: 55px;	
+	   //  top: auto;
+	   //  width: 100%;
+	   //  text-align: center;
+		display: none;
+		
 	    &:hover {
 	    	border-bottom: none;
 	    }

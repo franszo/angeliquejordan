@@ -15,30 +15,48 @@
 
 
 
-			$('.dragscroll img').pep({
-			  axis: "y",
-			  easeDuration: 2000,
-			  useCSSTranslation: false,
-			  easing: function(ev, obj){ 
-			  	outOfBounds(ev, obj)
-			  }
-			});
+			if ($('body').hasClass('single-work')) {
 
-			// Check if the text went outside its parent
-			function outOfBounds(ev,obj){  
-			  
-			  if ( -obj.$el.position().top > (obj.$el.outerHeight() - obj.$el.parent().outerHeight()) ){
-			   obj.$el.css({ top: -obj.$el.outerHeight() + obj.$el.parent().outerHeight()  })
-			  }
-			                          
-			   if ( obj.$el.position().top > 0 ){ 
-			     setTimeout(function(){ 
-			       obj.$el.css({ top: 0 });
-			     }, 100); 
-			   }
+				$('.dragscroll img').pep({
+				  axis: "y",
+				  easeDuration: 2000,
+				  useCSSTranslation: false,
+				  easing: function(ev, obj){ 
+				  	outOfBounds(ev, obj)
+				  }
+				});				
+
+				function outOfBounds(ev,obj){  			  
+				  if ( -obj.$el.position().top > (obj.$el.outerHeight() - obj.$el.parent().outerHeight()) ){
+				   obj.$el.css({ top: -obj.$el.outerHeight() + obj.$el.parent().outerHeight()  })
+				  }
+				                          
+				   if ( obj.$el.position().top > 0 ){ 
+				     setTimeout(function(){ 
+				       obj.$el.css({ top: 0 });
+				     }, 100); 
+				   }
+				}
+
+				$('a[href$=".gif"], a[href$=".jpg"], a[href$=".png"], a[href$=".bmp"]').magnificPopup({type:'image'});
+
 			}
 
-			$('a[href$=".gif"], a[href$=".jpg"], a[href$=".png"], a[href$=".bmp"]').magnificPopup({type:'image'});
+			$('#mobile-nav .about').click(function(e){
+				e.preventDefault();
+				$('.slideout.left .btn').click();
+				$('#header').removeClass('navigation-open');
+				$('.menu-btn').removeClass('active');
+				return false;				
+			});			
+
+			$('#mobile-nav .contact').click(function(e){
+				e.preventDefault();
+				$(".slideout.right .btn").click(); 
+				$('#header').removeClass('navigation-open');
+				$('.menu-btn').removeClass('active');
+				return false;				
+			});			
 
 		},
 

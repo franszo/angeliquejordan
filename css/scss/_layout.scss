@@ -103,6 +103,11 @@ body {
 	z-index: 5000;
 	padding: 48px 0 0;
 
+	@include device-width(7) {
+		z-index: 4990;
+		padding: 78px 0 0;
+	}
+
 	.logo-container {
 		text-align: center;
 		@include font-size(0);
@@ -199,7 +204,7 @@ body {
 		margin-top: 35px;
 		opacity: 1;
 
-		@include device-width(5) {
+		@include device-width(7) {
 			display: none;
 		}
 	    
@@ -225,6 +230,10 @@ body {
 	.header-fixed & {
 		padding: 47px 0 0;
 
+		@include device-width(7) {
+			padding: 77px 0 0;			
+		}
+
 		.logo-container {
 		}
 
@@ -237,7 +246,11 @@ body {
 	}
 
 	.single-work.header-fixed & {
-		padding: 47px 0 0;			
+		padding: 47px 0 0;	
+
+		@include device-width(7) {
+			padding: 77px 0 0;			
+		}				
 
 		.logo {
 
@@ -253,13 +266,17 @@ body {
 #main {
 	padding-top: 20em;
 
-	@include device-width(5) {
-		padding-top: 10em;		
+	@include device-width(7) {
+		padding-top: 13em;		
 	}
 
 	.single-work & {
 		padding-top: 0;
-	}
+
+		@include device-width(5) {
+			padding-top: 140px;
+		}
+ 	}
 }
 
 #footer {
