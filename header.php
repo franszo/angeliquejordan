@@ -17,7 +17,9 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, minimal-ui" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link href="<?php echo get_template_directory_uri(); ?>/images/misc/favicon.png" rel="shortcut icon" type="image/x-icon">
 
@@ -30,7 +32,7 @@
 	<div class="border bottom"></div>
 	<div class="border left"></div>
 
-	<?php if( is_front_page()): ?>
+	<?php //if( is_front_page()): ?>
 		<div class="slideout left">
 			<div class="content">
 				<a class="btn">About</a>
@@ -48,7 +50,7 @@
 				</div>
 			</div>
 		</div>			
-	<?php endif; ?>	
+	<?php //endif; ?>	
 
 <div id="tortilla">
 
