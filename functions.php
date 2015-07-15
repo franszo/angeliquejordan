@@ -26,11 +26,7 @@ add_action( 'wp_enqueue_scripts', 'custom_scripts', 30);
 
 add_action( 'wp_print_styles', 'custom_styles', 30);
 
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
-
-add_filter('body_class','custom_body_classes');
-
-add_filter( 'embed_oembed_html', 'custom_oembed_filter', 10, 4 ) ;
+add_action('wp_footer', 'add_googleanalytics');
 
 
 
@@ -43,6 +39,13 @@ add_filter( 'get_previous_post_where', 'gist_adjacent_post_where' );
 add_filter( 'get_next_post_sort', 'gist_adjacent_post_sort' );
 
 add_filter( 'get_previous_post_sort', 'gist_adjacent_post_sort' );
+
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
+
+add_filter('body_class','custom_body_classes');
+
+add_filter( 'embed_oembed_html', 'custom_oembed_filter', 10, 4 ) ;
+
 
 
 //Custom shortcodes
@@ -257,4 +260,18 @@ function gist_adjacent_post_sort($sql) {
   $pattern = '/post_date/';
   $replacement = 'menu_order';
   return preg_replace( $pattern, $replacement, $sql );
+}
+
+function add_googleanalytics() { ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12773726-24', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<?php 
 }
